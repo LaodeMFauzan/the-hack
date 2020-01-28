@@ -1,5 +1,7 @@
 package com.fauzan.project.hack.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 /**
@@ -12,7 +14,8 @@ public class Person {
     private final UUID id;
     private String name;
 
-    public Person(UUID id, String name) {
+    public Person(@JsonProperty("id") UUID id,
+                  @JsonProperty("name") String name) {
         this.id = id;
         this.name = name;
     }
@@ -23,5 +26,9 @@ public class Person {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
