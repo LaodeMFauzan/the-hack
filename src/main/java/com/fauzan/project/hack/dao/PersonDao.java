@@ -2,6 +2,8 @@ package com.fauzan.project.hack.dao;
 
 import com.fauzan.project.hack.model.Person;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -17,4 +19,12 @@ public interface PersonDao {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    List<Person> selectAllPeople();
+
+    Optional<Person> selectPersonById(UUID id);
+
+    int deletePerson(UUID id);
+
+    int updatePerson(UUID id, Person person);
 }
