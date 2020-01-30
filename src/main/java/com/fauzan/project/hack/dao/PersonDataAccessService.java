@@ -4,9 +4,7 @@ import com.fauzan.project.hack.model.Person;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by Intellij IDEA
@@ -24,7 +22,10 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int insertPerson(UUID id, Person person) {
-        return 0;
+        final String sql = "INSERT INTO person(id, name) VALUES (?,?)";
+        return jdbcTemplate.update(
+                sql,
+                UUID.randomUUID(), person.getName());
     }
 
     @Override
@@ -53,11 +54,18 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int deletePerson(UUID id) {
-        return 0;
+        final String sql = "DELETE FROM person WHERE id = ?";
+        return jdbcTemplate.update(
+                sql,
+                id);
     }
 
     @Override
     public int updatePerson(UUID id, Person person) {
-        return 0;
+        final String sql = "UPDATE person SET name = ? WHERE id = ?";
+        return jdbcTemplate.update(
+                sql,
+                person.getName(),
+                id);
     }
 }
