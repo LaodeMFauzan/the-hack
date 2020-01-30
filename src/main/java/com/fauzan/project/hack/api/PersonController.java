@@ -3,8 +3,10 @@ package com.fauzan.project.hack.api;
 import com.fauzan.project.hack.model.Person;
 import com.fauzan.project.hack.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,7 +46,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person updatedPerson) {
+    public void updatePerson(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Person updatedPerson) {
         personService.updatePerson(id, updatedPerson);
     }
 
