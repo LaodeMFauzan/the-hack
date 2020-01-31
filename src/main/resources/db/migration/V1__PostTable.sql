@@ -1,0 +1,6 @@
+CREATE TABLE post (
+    id UUID NOT NULL PRIMARY KEY,
+    author VARCHAR(100) NOT NULL,
+    title VARCHAR(500) NOT NULL,
+    content VARCHAR(5000) NOT NULL
+);
